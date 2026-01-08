@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basma El Haloui - Cybersécurité</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid rgba(138, 43, 226, 0.2);
+            box-shadow: 0 2px 15px rgba(138, 43, 226, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.4em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8a2be2 0%, #9370db 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            color: #555;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            padding: 6px 12px;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover {
+            color: #8a2be2;
+            background: rgba(138, 43, 226, 0.08);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-toggle span {
+            width: 22px;
+            height: 2px;
+            background: #8a2be2;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 30px;
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px 50px;
+            animation: fadeInDown 1s ease;
+            position: relative;
+        }
+
+        .welcome-section {
+            margin-bottom: 30px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .welcome-text {
+            font-size: 1.2em;
+            color: #9370db;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .welcome-line {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8a2be2, #9370db, #8a2be2, transparent);
+            margin: 0 auto 10px;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .header-decoration {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8a2be2, transparent);
+            margin: 0 auto 20px;
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #8a2be2 0%, #9370db 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        header .subtitle {
+            font-size: 1.3em;
+            color: #8a2be2;
+            margin-bottom: 8px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        header .speciality {
+            font-size: 1.05em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px 35px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(138, 43, 226, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.1);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .section h2 {
+            color: #8a2be2;
+            margin-bottom: 30px;
+            font-size: 2em;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #8a2be2, transparent);
+        }
+
+        .about-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #8a2be2 0%, #9370db 100%);
+            color: white;
+            padding: 18px 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            cursor: default;
+            box-shadow: 0 2px 10px rgba(138, 43, 226, 0.2);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.35);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .projects-divider {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin: 40px 0 30px;
+            position: relative;
+        }
+
+        .projects-divider h3 {
+            color: #8a2be2;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .projects-divider::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8a2be2, transparent);
+            margin: 15px auto 0;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(138, 43, 226, 0.15);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.25);
+            border-color: #8a2be2;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background: #f8f8f8;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.08);
+        }
+
+        .project-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .project-card h3 {
+            color: #8a2be2;
+            margin-bottom: 12px;
+            font-size: 1.25em;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            font-size: 0.92em;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-tag {
+            background: rgba(138, 43, 226, 0.1);
+            color: #8a2be2;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            font-weight: 500;
+        }
+
+        .project-button {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #8a2be2 0%, #9370db 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(138, 43, 226, 0.25);
+        }
+
+        .project-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .hobby-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(138, 43, 226, 0.15);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.25);
+            border-color: #8a2be2;
+        }
+
+        .hobby-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background: #f8f8f8;
+        }
+
+        .hobby-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .hobby-card:hover .hobby-image img {
+            transform: scale(1.08);
+        }
+
+        .hobby-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hobby-content h3 {
+            color: #8a2be2;
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .hobby-content p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+
+        .contact-text {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .email-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #8a2be2 0%, #9370db 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.3);
+        }
+
+        .email-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(138, 43, 226, 0.45);
+        }
+
+        footer {
+            text-align: center;
+            color: #888;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(138, 43, 226, 0.1);
+        }
+
+        footer p {
+            font-size: 0.9em;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                gap: 0;
+                padding: 15px;
+                display: none;
+                border-top: 1px solid rgba(138, 43, 226, 0.2);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 12px;
+                text-align: center;
+            }
+
+            header {
+                padding: 90px 15px 40px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+            
+            header .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .section h2 {
+                font-size: 1.7em;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                gap: 12px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">BE</div>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#hobbies">Loisirs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <div class="welcome-section">
+                <p class="welcome-text">Bienvenue sur mon Portfolio</p>
+                <div class="welcome-line"></div>
+            </div>
+            <div class="header-decoration"></div>
+            <h1>BASMA EL HALOUI</h1>
+            <div class="subtitle">INFORMATICIENNE</div>
+            <div class="speciality">Spécialité : Cybersécurité</div>
+        </header>
+
+        <!-- À Propos -->
+        <section class="section" id="about">
+            <h2>✨ À Propos</h2>
+            <p class="about-text">
+                Passionnée par l'informatique et spécialisée en cybersécurité, je développe des solutions web sécurisées et performantes. Mon parcours combine expertise technique et vision stratégique de la sécurité des systèmes d'information.
+            </p>
+        </section>
+
+        <!-- Compétences -->
+        <section class="section" id="skills">
+            <h2>💎 Compétences Techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-card">HTML5</div>
+                <div class="skill-card">CSS3</div>
+                <div class="skill-card">JavaScript</div>
+                <div class="skill-card">Java</div>
+                <div class="skill-card">JEE</div>
+                <div class="skill-card">Langage C</div>
+                <div class="skill-card">Laravel</div>
+                <div class="skill-card">MySQL</div>
+            </div>
+        </section>
+
+        <!-- Projets -->
+        <section class="section" id="projects">
+            <h2>🏆 Projets Réalisés</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/bureau-ordre.jpg" alt="Bureau d'Ordre Digital">
+                    </div>
+                    <div class="project-content">
+                        <h3>Bureau d'Ordre Digital</h3>
+                        <p>
+                            Application web de gestion digitale du courrier administratif provincial. Digitalisation complète du processus : réception, enregistrement, suivi et archivage des correspondances.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Stage Provincial</span>
+                            <span class="project-tag">Gestion Admin</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/annonces.png" alt="Plateforme d'Annonces">
+                    </div>
+                    <div class="project-content">
+                        <h3>Plateforme Web d'Annonces</h3>
+                        <p>
+                            Plateforme dynamique pour la publication et gestion d'annonces. Authentification sécurisée, recherche avancée et interface d'administration complète.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Projet de Fin d'Études</span>
+                            <span class="project-tag">Full Stack</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="projects-divider">
+                    <h3>📚 Réalisations de cette année après mon apprentissage</h3>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/formulaire.jpg" alt="Formulaire Web">
+                    </div>
+                    <div class="project-content">
+                        <h3>Formulaire Web Interactif</h3>
+                        <p>
+                            Formulaire web complet avec validation des données et interface intuitive. Design responsive adapté à tous les appareils.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Projet Académique</span>
+                            <span class="project-tag">HTML/CSS</span>
+                        </div>
+                        <a href="formulaire.html" class="project-button" target="_blank">Voir le Projet →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/voyage.jpg" alt="Site Voyage">
+                    </div>
+                    <div class="project-content">
+                        <h3>Site Web Voyage</h3>
+                        <p>
+                            Site vitrine responsive dédié aux voyages. Galeries d'images et navigation fluide avec HTML5 et CSS3.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Projet Académique</span>
+                            <span class="project-tag">Responsive</span>
+                        </div>
+                        <a href="voyage.html" class="project-button" target="_blank">Voir le Projet →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/voyage-oriente.jpg" alt="Voyage Orienté">
+                    </div>
+                    <div class="project-content">
+                        <h3>Site Voyage Orienté</h3>
+                        <p>
+                            Site thématique sur les voyages avec contenus multimédias. Galeries photos et expérience utilisateur optimisée.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Projet Académique</span>
+                            <span class="project-tag">Design Web</span>
+                        </div>
+                        <a href="voyageee.html" class="project-button" target="_blank">Voir le Projet →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/javascript.jpg" alt="Application JavaScript">
+                    </div>
+                    <div class="project-content">
+                        <h3>Application Interactive JS</h3>
+                        <p>
+                            Application web interactive avec JavaScript ES6+. Manipulation du DOM, gestion des événements et animations.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Projet Académique</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <a href="tp-js.html" class="project-button" target="_blank">Voir le Projet →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loisirs -->
+        <section class="section" id="hobbies">
+            <h2>🎨 Mes Loisirs</h2>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <div class="hobby-image">
+                        <img src="images/cuisine.jpg" alt="La Cuisine">
+                    </div>
+                    <div class="hobby-content">
+                        <h3>La Cuisine</h3>
+                        <p>
+                            Passionnée par l'art culinaire, j'adore explorer de nouvelles recettes et créer des plats savoureux. La cuisine est pour moi un moyen de créativité et de partage.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section" id="contact">
+            <h2>📧 Contact</h2>
+            <div class="contact-info">
+                <p class="contact-text">Vous souhaitez discuter d'un projet ou d'une opportunité professionnelle ?</p>
+                <a href="mailto:basmahaloui2005@gmail.com" class="email-button">
+                    ✉ basmahaloui2005@gmail.com
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Basma El Haloui - Tous droits réservés</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

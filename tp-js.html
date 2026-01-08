@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>TP JavaScript – Exercices de base</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background:#f4f6f8;
+            margin:0;
+            padding:20px;
+        }
+        h1{
+            text-align:center;
+            color:#333;
+        }
+        .exercise{
+            background:#fff;
+            padding:20px;
+            margin:20px auto;
+            border-radius:10px;
+            max-width:800px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2{
+            color:#0066cc;
+        }
+        .question{
+            background:#eef5ff;
+            padding:12px;
+            border-left:4px solid #0066cc;
+            margin:12px 0;
+        }
+        button{
+            padding:8px 14px;
+            margin:5px 0;
+            border:none;
+            border-radius:6px;
+            background:#0066cc;
+            color:white;
+            cursor:pointer;
+        }
+        button:hover{
+            background:#004999;
+        }
+        .box{
+            width:200px;
+            height:80px;
+            background:#ccc;
+            margin-bottom:10px;
+            border-radius:8px;
+        }
+        input{
+            padding:6px;
+            width:90px;
+            margin:4px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>TP d'initiation JavaScript</h1>
+
+<!-- Exercice 1 -->
+<div class="exercise">
+    <h2>Exercice 1 : Changer la couleur d’un élément</h2>
+
+    <div class="question">
+        <strong>Travail demandé :</strong><br>
+        Écrire un code JavaScript qui permet de changer la couleur de fond du bloc ci-dessous
+        lorsqu’on clique sur le bouton.
+    </div>
+
+    <div id="box" class="box"></div>
+     <button onclick="changerCouleur()">Changer couleur</button>
+</div>
+
+
+<!-- Exercice 2 -->
+<div class="exercise">
+    <h2>Exercice 2 : Cacher un texte (Hide)</h2>
+    <div class="question">
+        <strong>Travail demandé :</strong><br>
+        Écrire une fonction JavaScript qui permet de cacher le paragraphe ci-dessous
+        lorsqu’on clique sur le bouton <em>Hide</em>.
+    </div>
+
+    <p id="text1">Ce texte peut être caché.</p>
+    <button onclick="hideText()">Hide</button>
+</div>
+
+
+
+<!-- Exercice 3 -->
+<div class="exercise">
+    <h2>Exercice 3 : Afficher / Cacher un élément (Toggle)</h2>
+
+    <div class="question">
+        <strong>Travail demandé :</strong><br>
+        Écrire une fonction JavaScript qui permet d’afficher ou de cacher le texte
+        à chaque clic sur le bouton (un seul bouton).
+    </div>
+
+    <p id="text2">Je suis visible ou caché.</p>
+    <button onclick="toggleText()">Toggle</button>
+
+</div>
+
+
+
+<!-- Exercice 4 -->
+<div class="exercise">
+    <h2>Exercice 4 : Modifier le dernier élément d’une liste</h2>
+
+    <div class="question">
+        <strong>Travail demandé :</strong><br>
+        Écrire un script JavaScript qui permet de modifier le contenu du dernier élément
+        de la liste ci-dessous lorsqu’on clique sur le bouton.
+    </div>
+
+    <ul id="list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+
+    <button onclick="modifierDernier()">Modifier le dernier élément</button>
+
+</div>
+
+
+<!-- Exercice 5 -->
+<div class="exercise">
+    <h2>Exercice 5 : Mini calculatrice</h2>
+
+    <div class="question">
+        <strong>Travail demandé :</strong><br>
+        Créer une mini calculatrice en JavaScript qui permet d’effectuer les opérations
+        d’addition, soustraction, multiplication et division entre deux nombres
+        en utilisant des boutons et l’événement <code>onclick</code>.
+    </div>
+
+    <input type="number" id="a" placeholder="Nombre A">
+    <input type="number" id="b" placeholder="Nombre B"><br>
+
+    <button onclick="addition()">+</button>
+    <button onclick="soustraction()">-</button>
+    <button onclick="multiplication()">×</button>
+    <button onclick="division()">÷</button>
+
+    <p>Résultat : <strong><span id="result">0</span></strong></p>
+</div>
+
+<script>
+    // Exercice 1
+    const box = document.getElementById("box");
+
+    function changerCouleur() {
+        box.style.backgroundColor = "orange";
+    }
+
+
+    // Exercice 2
+   
+    function hideText() {
+        document.getElementById("text1").style.display = "none";
+    }
+
+
+    // Exercice 3
+    function toggleText() {
+        const text = document.getElementById("text2");
+
+        if (text.style.display === "none") {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+
+    // Exercice 4
+
+    function modifierDernier() {
+    alert("Le bouton fonctionne");
+    const list = document.getElementById("list");
+    list.lastElementChild.innerHTML = "PHP";
+    }
+
+    // Exercice 5
+    function addition() {
+        const a = Number(document.getElementById("a").value);
+        const b = Number(document.getElementById("b").value);
+        document.getElementById("result").innerHTML = a + b;
+    }
+    function soustraction() {
+        const a = Number(document.getElementById("a").value);
+        const b = Number(document.getElementById("b").value);
+        document.getElementById("result").innerHTML = a - b;
+    }
+    function multiplication() {
+        const a = Number(document.getElementById("a").value);
+        const b = Number(document.getElementById("b").value);
+        document.getElementById("result").innerHTML = a * b;
+    }
+    function division() {
+        const a = Number(document.getElementById("a").value);
+        const b = Number(document.getElementById("b").value);
+
+        if (b !== 0) {
+            document.getElementById("result").innerHTML = a / b;
+        } else {
+            document.getElementById("result").innerHTML = "Erreur";
+        }
+    }
+
+</script>
+
+</body>
+</html>

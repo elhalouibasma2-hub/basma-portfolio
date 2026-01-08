@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire d’inscription étudiant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Formulaire d’inscription étudiant</h1>
+
+    <form>
+
+        <!-- Informations personnelles -->
+        <fieldset>
+            <legend>Informations personnelles</legend>
+
+            <div class="row">
+                <div class="field">
+                    <label>Nom complet</label>
+                    <input type="text" placeholder="Ex : Issam Rajab">
+                </div>
+
+                <div class="field">
+                    <label>Code étudiant / CNE</label>
+                    <input type="text" placeholder="Ex : D123456789">
+                    <small>6 à 15 caractères alphanumériques</small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="field">
+                    <label>Email institutionnel</label>
+                    <input type="email" placeholder="prenom.nom@ecole.ma">
+                </div>
+
+                <div class="field">
+                    <label>Mot de passe du compte</label>
+                    <input type="password">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="field">
+                    <label>Téléphone</label>
+                    <input type="tel" placeholder="+212 6xx xx xx xx">
+                </div>
+
+                <div class="field">
+                    <label>Âge</label>
+                    <input type="number">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Portfolio / LinkedIn (optionnel)</label>
+                <input type="url" placeholder="https://linkedin.com/in/...">
+            </div>
+        </fieldset>
+
+        <!-- Dates importantes -->
+        <fieldset>
+            <legend>Dates importantes</legend>
+
+            <div class="row">
+                <div class="field">
+                    <label>Date de naissance</label>
+                    <input type="date">
+                </div>
+
+                <div class="field">
+                    <label>Date et heure d'inscription</label>
+                    <input type="datetime-local">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="field">
+                    <label>Année universitaire</label>
+                    <input type="month">
+                </div>
+
+                <div class="field">
+                    <label>Semaine d’intégration</label>
+                    <input type="week">
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Informations académiques -->
+        <fieldset>
+            <legend>Informations académiques</legend>
+
+            <label>Genre</label>
+            <div class="inline">
+                <label><input type="radio" name="genre"> Homme</label>
+                <label><input type="radio" name="genre"> Femme</label>
+            </div>
+
+            <label>Domaines d’intérêt</label>
+            <div class="inline">
+                <label><input type="checkbox"> Développement Web</label>
+                <label><input type="checkbox"> Intelligence Artificielle</label>
+                <label><input type="checkbox"> Data Science</label>
+                <label><input type="checkbox"> Cloud & Data Centers</label>
+            </div>
+
+            <div class="row">
+                <div class="field">
+                    <label>Niveau d’étude</label>
+                    <select>
+                        <option>-- Choisir --</option>
+                        <option>Bac</option>
+                        <option>Bac+2</option>
+                        <option>Bac+3</option>
+                        <option>Master</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Pays d’origine</label>
+                    <select>
+                        <option>Maroc</option>
+                        <option>France</option>
+                        <option>Autre</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Auto-évaluation -->
+        <fieldset>
+            <legend>Auto-évaluation</legend>
+
+            <label>Couleur préférée (profil)</label>
+            <input type="color">
+
+            <label>Niveau en informatique</label>
+            <input type="range" min="0" max="10">
+            <small>0 = débutant, 10 = très avancé</small>
+        </fieldset>
+
+        <!-- Documents -->
+        <fieldset>
+            <legend>Documents à fournir</legend>
+
+            <label>Photo d’identité</label>
+            <input type="file">
+
+            <label>CV (PDF)</label>
+            <input type="file">
+
+            <label>Code d’inscription</label>
+            <input type="text" value="INS-2025">
+
+            <label class="checkbox">
+                <input type="checkbox">
+                J’accepte le règlement intérieur de l’établissement
+            </label>
+        </fieldset>
+
+        <!-- Message -->
+        <fieldset>
+            <legend>Message</legend>
+            <label>Motivation ou remarque</label>
+            <textarea placeholder="Expliquez brièvement votre motivation..."></textarea>
+        </fieldset>
+
+        <!-- Boutons -->
+        <div class="buttons">
+            <button type="submit">Valider l’inscription</button>
+            <button type="reset" class="cancel">Annuler</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
